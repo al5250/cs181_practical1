@@ -61,32 +61,32 @@ nnreg.fit(X_train, y_train)
 evaluate(nnreg, X_train, y_train)
 evaluate(nnreg, X_valid, y_valid)
 
-# with open("parameters.csv", "w") as myfile:
-#   myfile.write(str(LR.intercept_))
-#   for coef in LR.coef_:
-#     myfile.write(",")
-#     myfile.write(str(coef))
-#   myfile.write("\n")
+with open("parameters.csv", "w") as myfile:
+  myfile.write(str(LR.intercept_))
+  for coef in LR.coef_:
+    myfile.write(",")
+    myfile.write(str(coef))
+  myfile.write("\n")
 
-# # Ridge Regression Model
+# Ridge Regression Model
 
-# evaluate(LR, X_valid, y_valid)
+evaluate(LR, X_valid, y_valid)
 
-# df_fprints_test = pd.read_csv("fingerprints_test.csv", index_col=0, header=None)
-# print df_fprints_test.head()
+df_fprints_test = pd.read_csv("fingerprints_test.csv", index_col=0, header=None)
+print df_fprints_test.head()
 
-# yhat_test = LR.predict(df_fprints_test)
+yhat_test = LR.predict(df_fprints_test)
 
 
-# # Write to file
-# with open("predictions.csv", "w") as myfile:
-#   id = 0
-#   myfile.write('Id,Prediction\n')
-#   for pred in yhat_test:
-#     id += 1
-#     myfile.write(str(id))
-#     myfile.write(',')
-#     myfile.write(str(pred))
-#     myfile.write('\n')
-#     if id % 10000 == 0:
-#       print 'Done with {}'.format(id)
+# Write to file
+with open("predictions.csv", "w") as myfile:
+  id = 0
+  myfile.write('Id,Prediction\n')
+  for pred in yhat_test:
+    id += 1
+    myfile.write(str(id))
+    myfile.write(',')
+    myfile.write(str(pred))
+    myfile.write('\n')
+    if id % 10000 == 0:
+      print 'Done with {}'.format(id)
